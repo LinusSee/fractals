@@ -2,6 +2,8 @@
 #include <complex>
 #include <tuple>
 
+#include "mandelbrot.h"
+
 using namespace std;
 
 
@@ -48,6 +50,34 @@ int** mandelbrot_set(double start_x, double end_x, double start_y, double end_y,
 	}
 
 	return m_set;
+}
+
+int* point_color(int iterations, int max_iterations)
+{
+	float percentage = (1.0f * iterations) / max_iterations;
+	int* colors = new int[4];
+	colors[3] = 255;
+	if(percentage <= 0.33f)
+	{
+		percentage = percentage / 0.33f;
+		colors[0] = std::ceil(255 * percentage);
+		colors[1] = 0;
+		colors[1] = 0;
+	} else if(percentage <= 0.66f)
+	{
+		percentage = (0.66f - percentage) / 0.33f;
+		colors[0] = std::ceil(255 * percentage);
+		colors[1] = std::ceil(255 * (1 - percentage));
+		colors[2] = 0;
+	} else
+	{
+		percentage = (1.0f - percentage) / 0.34f;
+		colors[0] = 0;
+		colors[1] = std::ceil(255 * percentage);
+		colors[2] = std::ceil(255 * (1 - percentage));
+	}
+
+	return colors;
 }
 
 
