@@ -41,9 +41,7 @@ int** mandelbrot_set(double start_x, double end_x, double start_y, double end_y,
 
 			complex<double> c(current_x, current_y);
 			int iterations = mandelbrot_point(c, max_iterations);
-			//auto m_set_tuple = make_tuple(iterations, c);
 
-			//m_set[i][j] = m_set_tuple;
 			m_set[i][j] = iterations;
 			current_x = current_x + spacing_x;
 		}
@@ -84,7 +82,7 @@ sf::Uint8* point_color(int iterations, int max_iterations)
 }
 
 
-sf::Uint8* set_to_image(int** m_set, int num_points)
+sf::Uint8* set_to_image(int** m_set, int num_points, int max_iterations)
 {
     sf::Uint8* image = new sf::Uint8[num_points * num_points * 4];
     for(int x = 0; x < num_points; x++)
@@ -92,15 +90,11 @@ sf::Uint8* set_to_image(int** m_set, int num_points)
         for(int y = 0; y < num_points; y++)
         {
             int index = x * num_points * 4 + y * 4;
-            sf::Uint8* color = point_color(m_set[x][y], 120);
+            sf::Uint8* color = point_color(m_set[x][y], max_iterations);
             image[index] = color[0];
             image[index + 1] = color[1];
             image[index + 2] = color[2];
             image[index + 3] = color[3];
-            /*image[index] = m_set[x][y];
-            image[index + 1] = m_set[x][y];
-            image[index + 2] = m_set[x][y];
-            image[index + 3] = 255;*/
         }
     }
     return image;
@@ -112,15 +106,6 @@ int main()
     constexpr int num_points = 1000;
 	int** m_set = mandelbrot_set(-2.25, 0.75, -1.5, 1.5, num_points, 120);
 
-	/*for(int i = 0; i < num_points; i++)
-	{
-		for(int j = 0; j < num_points; j++)
-		{
-			cout << m_set[i][j] << " - ";
-		}
-		cout << endl;
-	}*/
-
 
     constexpr float width = num_points;
     constexpr float height = num_points;
@@ -128,21 +113,6 @@ int main()
 
 
     sf::Uint8* image = set_to_image(m_set, num_points);
-    //sf::Image image;
-    //image.create(num_points, num_points, sf::Color::Red);
-
-    sf::Uint8* pixels = new sf::Uint8[num_points * num_points * 4];
-    for(int x = 0; x < num_points; x++)
-    {
-        for(int y = 0; y < num_points; y++)
-        {
-            int index = x * num_points * 4 + y * 4;
-            pixels[index] = 0;
-            pixels[index + 1] = 255;
-            pixels[index + 2] = 0;
-            pixels[index + 3] = 255;
-        }
-    }
 
     sf::Texture texture;
     if(!texture.create(num_points, num_points))
