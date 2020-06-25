@@ -2,3 +2,7 @@ bin/
 obj/
 *.depend
 *.layout
+
+# Visual Studio
+.vs
+*.user
