@@ -19,6 +19,11 @@ Then I (primitively) interpolated the color depending on how quickly a point esc
 <br>
 ![alt mandelbrot_in_color](./assets/images/sfml_mandelbrot_color.JPG)
 
+### Goal #2
+Since CUDA is (on Windows) only compatible with VisualC++, which I conveniently ignored, I had some trouble matching my TDM or MinGW compiled SFML code with CUDA code.
+<br>
+Since I am using VS 19 I had to build SFML locally and then included it in a VS project to run a SFML code sample. Then I updated CUDA to 10.1 update 2, so I have a VS CUDA template and now I am finally able to create CUDA project in VS code. Now all I need to do is combine SFML and CUDA in a project to get going with goal #2.
+
 ## Resources
 In this project I use SFML and Nvidia Cuda.
 I found the SFML setup (on Windows) rather troublesome, this [tutorial](https://www.youtube.com/watch?v=fcZFaiGFIMA) really helped me out.
