@@ -1,121 +1,151 @@
-
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 
 #include <stdio.h>
+#include <iostream>
+#include <complex>
+#include <tuple>
 
-cudaError_t addWithCuda(int *c, const int *a, const int *b, unsigned int size);
+#include <SFML/Graphics.hpp>
 
-__global__ void addKernel(int *c, const int *a, const int *b)
+using namespace std;
+
+
+int mandelbrot_point(complex<double> c, int max_iterations)
 {
-    int i = threadIdx.x;
-    c[i] = a[i] + b[i];
+    std::complex<double> z(0, 0);
+    for (int i = 0; i < max_iterations; i++)
+    {
+        z = z * z + c;
+        if (abs(z) > 4)
+        {
+            return i;
+        }
+    }
+    return max_iterations;
 }
+
+int** mandelbrot_set(double start_x, double end_x, double start_y, double end_y, int num_points, int max_iterations)
+{
+    double spacing_x = abs(end_x - start_x) / (num_points - 1);
+    double spacing_y = abs(end_y - start_y) / (num_points - 1);
+
+    cout << "SpacingX: " << spacing_x << endl;
+    cout << "SpacingY: " << spacing_y << endl;
+
+    double current_x = start_x;
+    double current_y = start_y;
+
+    int** m_set = new int* [num_points];
+    for (int i = 0; i < num_points; i++)
+    {
+        m_set[i] = new int[num_points];
+        for (int j = 0; j < num_points; j++)
+        {
+
+            complex<double> c(current_x, current_y);
+            int iterations = mandelbrot_point(c, max_iterations);
+
+            m_set[i][j] = iterations;
+            current_x = current_x + spacing_x;
+        }
+        current_x = start_x;
+        current_y = current_y + spacing_y;
+    }
+
+    return m_set;
+}
+
+int* point_color(int iterations, int max_iterations)
+{
+    float percentage = (1.0f * iterations) / max_iterations;
+    int* colors = new int[4];
+    colors[3] = 255;
+    if (percentage <= 0.33f)
+    {
+        percentage = percentage / 0.33f;
+        colors[0] = std::ceil(255 * percentage);
+        colors[1] = 0;
+        colors[1] = 0;
+    }
+    else if (percentage <= 0.66f)
+    {
+        percentage = (0.66f - percentage) / 0.33f;
+        colors[0] = std::ceil(255 * percentage);
+        colors[1] = std::ceil(255 * (1 - percentage));
+        colors[2] = 0;
+    }
+    else
+    {
+        percentage = (1.0f - percentage) / 0.34f;
+        colors[0] = 0;
+        colors[1] = std::ceil(255 * percentage);
+        colors[2] = std::ceil(255 * (1 - percentage));
+    }
+
+    return colors;
+}
+
+
+
+
+
+
+
+sf::Uint8* set_to_image(int** m_set, int num_points, int max_iterations)
+{
+    sf::Uint8* image = new sf::Uint8[num_points * num_points * 4];
+    for (int x = 0; x < num_points; x++)
+    {
+        for (int y = 0; y < num_points; y++)
+        {
+            int index = x * num_points * 4 + y * 4;
+            //sf::Uint8* color = point_color(m_set[x][y], max_iterations);
+            int* color = point_color(m_set[x][y], max_iterations);
+            image[index] = color[0];
+            image[index + 1] = color[1];
+            image[index + 2] = color[2];
+            image[index + 3] = color[3];
+        }
+    }
+    return image;
+}
+
 
 int main()
 {
-    const int arraySize = 5;
-    const int a[arraySize] = { 1, 2, 3, 4, 5 };
-    const int b[arraySize] = { 10, 20, 30, 40, 50 };
-    int c[arraySize] = { 0 };
+    constexpr int num_points = 1000;
+    int** m_set = mandelbrot_set(-2.25, 0.75, -1.5, 1.5, num_points, 120);
 
-    // Add vectors in parallel.
-    cudaError_t cudaStatus = addWithCuda(c, a, b, arraySize);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "addWithCuda failed!");
-        return 1;
+
+    constexpr float width = num_points;
+    constexpr float height = num_points;
+    sf::RenderWindow window(sf::VideoMode(num_points, num_points), "It works!");
+
+
+    sf::Uint8* image = set_to_image(m_set, num_points, 120);
+
+    sf::Texture texture;
+    if (!texture.create(num_points, num_points))
+    {
+        return -1;
     }
+    texture.update(image);
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
 
-    printf("{1,2,3,4,5} + {10,20,30,40,50} = {%d,%d,%d,%d,%d}\n",
-        c[0], c[1], c[2], c[3], c[4]);
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
 
-    // cudaDeviceReset must be called before exiting in order for profiling and
-    // tracing tools such as Nsight and Visual Profiler to show complete traces.
-    cudaStatus = cudaDeviceReset();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaDeviceReset failed!");
-        return 1;
+        window.clear();
+        window.draw(sprite);
+        window.display();
     }
-
     return 0;
-}
-
-// Helper function for using CUDA to add vectors in parallel.
-cudaError_t addWithCuda(int *c, const int *a, const int *b, unsigned int size)
-{
-    int *dev_a = 0;
-    int *dev_b = 0;
-    int *dev_c = 0;
-    cudaError_t cudaStatus;
-
-    // Choose which GPU to run on, change this on a multi-GPU system.
-    cudaStatus = cudaSetDevice(0);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaSetDevice failed!  Do you have a CUDA-capable GPU installed?");
-        goto Error;
-    }
-
-    // Allocate GPU buffers for three vectors (two input, one output)    .
-    cudaStatus = cudaMalloc((void**)&dev_c, size * sizeof(int));
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMalloc failed!");
-        goto Error;
-    }
-
-    cudaStatus = cudaMalloc((void**)&dev_a, size * sizeof(int));
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMalloc failed!");
-        goto Error;
-    }
-
-    cudaStatus = cudaMalloc((void**)&dev_b, size * sizeof(int));
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMalloc failed!");
-        goto Error;
-    }
-
-    // Copy input vectors from host memory to GPU buffers.
-    cudaStatus = cudaMemcpy(dev_a, a, size * sizeof(int), cudaMemcpyHostToDevice);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMemcpy failed!");
-        goto Error;
-    }
-
-    cudaStatus = cudaMemcpy(dev_b, b, size * sizeof(int), cudaMemcpyHostToDevice);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMemcpy failed!");
-        goto Error;
-    }
-
-    // Launch a kernel on the GPU with one thread for each element.
-    addKernel<<<1, size>>>(dev_c, dev_a, dev_b);
-
-    // Check for any errors launching the kernel
-    cudaStatus = cudaGetLastError();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "addKernel launch failed: %s\n", cudaGetErrorString(cudaStatus));
-        goto Error;
-    }
-    
-    // cudaDeviceSynchronize waits for the kernel to finish, and returns
-    // any errors encountered during the launch.
-    cudaStatus = cudaDeviceSynchronize();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaDeviceSynchronize returned error code %d after launching addKernel!\n", cudaStatus);
-        goto Error;
-    }
-
-    // Copy output vector from GPU buffer to host memory.
-    cudaStatus = cudaMemcpy(c, dev_c, size * sizeof(int), cudaMemcpyDeviceToHost);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMemcpy failed!");
-        goto Error;
-    }
-
-Error:
-    cudaFree(dev_c);
-    cudaFree(dev_a);
-    cudaFree(dev_b);
-    
-    return cudaStatus;
 }

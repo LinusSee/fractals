@@ -1,0 +1,226 @@
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_malloc.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_memcpy_s.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_memory.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_search.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_share.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_stdio_config.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_terminate.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wconio.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wctype.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wdirect.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wio.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wprocess.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstdio.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstdlib.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstring.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wtime.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\ctype.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\errno.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\float.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\locale.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\math.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\share.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stddef.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\sys\stat.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\sys\types.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\time.h
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\wchar.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\builtin_types.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\channel_descriptor.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\common_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_double_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_double_functions.hpp
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_functions.hpp
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\host_config.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\host_defines.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\math_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\math_functions.hpp
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\sm_70_rt.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_device_runtime_api.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_runtime.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_runtime_api.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_surface_types.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_texture_types.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_atomic_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_launch_parameters.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_types.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\driver_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\driver_types.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\library_types.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_atomic_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_intrinsics.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_30_intrinsics.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_atomic_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_intrinsics.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_35_atomic_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_35_intrinsics.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_60_atomic_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_61_intrinsics.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_indirect_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_types.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_fetch_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_indirect_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_types.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_functions.hpp
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_types.h
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Config.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\BlendMode.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\CircleShape.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Color.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\ConvexShape.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Drawable.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Export.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Font.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Glsl.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Glsl.inl
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Glyph.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Image.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\PrimitiveType.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Rect.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Rect.inl
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\RectangleShape.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\RenderStates.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\RenderTarget.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\RenderTexture.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\RenderWindow.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Shader.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Shape.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Sprite.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Text.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Texture.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Transform.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Transformable.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\Vertex.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\VertexArray.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\VertexBuffer.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Graphics\View.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Clock.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Err.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Export.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\FileInputStream.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\InputStream.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Lock.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\MemoryInputStream.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Mutex.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\NonCopyable.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Sleep.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\String.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\String.inl
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Thread.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Thread.inl
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\ThreadLocal.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\ThreadLocalPtr.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\ThreadLocalPtr.inl
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Time.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Utf.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Utf.inl
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Vector2.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Vector2.inl
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Vector3.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\System\Vector3.inl
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Clipboard.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Context.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\ContextSettings.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Cursor.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Event.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Export.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\GlResource.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Joystick.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Keyboard.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Mouse.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Sensor.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Touch.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\VideoMode.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\Window.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\WindowHandle.hpp
+D:\projects\dependencies\vs_code_sfml_compile\SFML-2.5.1-sources_x642\include\SFML\Window\WindowStyle.hpp
+D:\projects\fractals\mandelbrot\mandelbrot_cuda\mandelbrot_cuda\kernel.cu
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\algorithm
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cerrno
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cfloat
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\climits
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cmath
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\complex
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\concurrencysal.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\crtdefs.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cstddef
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cstdint
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cstdio
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cstdlib
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cstring
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\ctime
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cwchar
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\eh.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\exception
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\initializer_list
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\intrin0.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\ios
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\iosfwd
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\iostream
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\istream
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\iterator
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\limits
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\limits.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\locale
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\map
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\memory
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\new
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\ostream
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\sal.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\sstream
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\stdexcept
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\stdint.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\streambuf
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\string
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\system_error
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\tuple
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\typeinfo
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\type_traits
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\use_ansi.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\utility
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vadefs.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vcruntime.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vcruntime_exception.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vcruntime_new.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vcruntime_new_debug.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vcruntime_string.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vcruntime_typeinfo.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xatomic.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xcall_once.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xerrc.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xfacet
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xiosbase
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xkeycheck.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xlocale
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xlocbuf
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xlocinfo
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xlocinfo.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xlocmes
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xlocmon
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xlocnum
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xloctime
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xmemory
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xstddef
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xstring
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xtr1common
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xtree
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xutility
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\ymath.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\yvals.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\yvals_core.h
+E:\OtherStuff\visual_studio\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\__msvc_system_error_abi.hpp
