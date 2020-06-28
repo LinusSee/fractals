@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
+
 using namespace std;
 
 
@@ -91,6 +92,7 @@ sf::Uint8* set_to_image(int** m_set, int num_points, int max_iterations)
         {
             int index = x * num_points * 4 + y * 4;
             sf::Uint8* color = point_color(m_set[x][y], max_iterations);
+            //int* color = point_color(m_set[x][y], max_iterations);
             image[index] = color[0];
             image[index + 1] = color[1];
             image[index + 2] = color[2];
@@ -112,7 +114,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(width, height), "It works!");
 
 
-    sf::Uint8* image = set_to_image(m_set, num_points);
+    sf::Uint8* image = set_to_image(m_set, num_points, 120);
 
     sf::Texture texture;
     if(!texture.create(num_points, num_points))
