@@ -26,7 +26,7 @@ int mandelbrot_point(complex<double> c, int max_iterations)
 }
 
 //__global__
-int* mandelbrot_set(double start_x, double end_x, double start_y, double end_y, int num_points, int max_iterations)
+void mandelbrot_set(int* m_set, double start_x, double end_x, double start_y, double end_y, int num_points, int max_iterations)
 {
     double spacing_x = abs(end_x - start_x) / ((double) num_points - 1.0);
     double spacing_y = abs(end_y - start_y) / ((double) num_points - 1.0);
@@ -37,7 +37,7 @@ int* mandelbrot_set(double start_x, double end_x, double start_y, double end_y, 
     double current_x = start_x;
     double current_y = start_y;
 
-    int* m_set = new int[num_points * num_points];
+    //int* m_set = new int[num_points * num_points];
     for (int i = 0; i < num_points; i++)
     {
         for (int j = 0; j < num_points; j++)
@@ -54,7 +54,7 @@ int* mandelbrot_set(double start_x, double end_x, double start_y, double end_y, 
         current_y = current_y + spacing_y;
     }
 
-    return m_set;
+    //return m_set;
 }
 
 int* point_color(int iterations, int max_iterations)
@@ -114,8 +114,8 @@ int main()
     constexpr int num_points = 1000;
     int blockSize = 256;
     int numBlocks = (num_points + blockSize - 1) / blockSize;
-    //int** m_set = mandelbrot_set <<<numBlocks, blockSize >>> (-2.25, 0.75, -1.5, 1.5, num_points, 120);
-    int* m_set = mandelbrot_set(-2.25, 0.75, -1.5, 1.5, num_points, 120);
+    int* m_set = new int[num_points * num_points];
+    mandelbrot_set(m_set, -2.25, 0.75, -1.5, 1.5, num_points, 120);
 
 
     constexpr int width = num_points;
