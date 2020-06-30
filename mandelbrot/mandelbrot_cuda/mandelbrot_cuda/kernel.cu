@@ -25,10 +25,11 @@ int mandelbrot_point(complex<double> c, int max_iterations)
     return max_iterations;
 }
 
-int** mandelbrot_set(double start_x, double end_x, double start_y, double end_y, int num_points, int max_iterations)
+//__global__
+int* mandelbrot_set(double start_x, double end_x, double start_y, double end_y, int num_points, int max_iterations)
 {
-    double spacing_x = abs(end_x - start_x) / (num_points - 1);
-    double spacing_y = abs(end_y - start_y) / (num_points - 1);
+    double spacing_x = abs(end_x - start_x) / ((double) num_points - 1.0);
+    double spacing_y = abs(end_y - start_y) / ((double) num_points - 1.0);
 
     cout << "SpacingX: " << spacing_x << endl;
     cout << "SpacingY: " << spacing_y << endl;
@@ -36,17 +37,17 @@ int** mandelbrot_set(double start_x, double end_x, double start_y, double end_y,
     double current_x = start_x;
     double current_y = start_y;
 
-    int** m_set = new int* [num_points];
+    int* m_set = new int[num_points * num_points];
     for (int i = 0; i < num_points; i++)
     {
-        m_set[i] = new int[num_points];
         for (int j = 0; j < num_points; j++)
         {
+            int index = i * num_points + j;
 
             complex<double> c(current_x, current_y);
             int iterations = mandelbrot_point(c, max_iterations);
 
-            m_set[i][j] = iterations;
+            m_set[index] = iterations;
             current_x = current_x + spacing_x;
         }
         current_x = start_x;
@@ -64,23 +65,23 @@ int* point_color(int iterations, int max_iterations)
     if (percentage <= 0.33f)
     {
         percentage = percentage / 0.33f;
-        colors[0] = std::ceil(255 * percentage);
+        colors[0] = std::ceil(255.f * percentage);
         colors[1] = 0;
         colors[1] = 0;
     }
     else if (percentage <= 0.66f)
     {
         percentage = (0.66f - percentage) / 0.33f;
-        colors[0] = std::ceil(255 * percentage);
-        colors[1] = std::ceil(255 * (1 - percentage));
+        colors[0] = std::ceil(255.f * percentage);
+        colors[1] = std::ceil(255.f * (1.f - percentage));
         colors[2] = 0;
     }
     else
     {
         percentage = (1.0f - percentage) / 0.34f;
         colors[0] = 0;
-        colors[1] = std::ceil(255 * percentage);
-        colors[2] = std::ceil(255 * (1 - percentage));
+        colors[1] = std::ceil(255.f * percentage);
+        colors[2] = std::ceil(255.f * (1.f - percentage));
     }
 
     return colors;
@@ -92,21 +93,17 @@ int* point_color(int iterations, int max_iterations)
 
 
 
-sf::Uint8* set_to_image(int** m_set, int num_points, int max_iterations)
+sf::Uint8* set_to_image(int* m_set, int num_points, int max_iterations)
 {
-    sf::Uint8* image = new sf::Uint8[num_points * num_points * 4];
-    for (int x = 0; x < num_points; x++)
+    sf::Uint8* image = new sf::Uint8[(long long)num_points * num_points * 4];
+    for (int x = 0; x < num_points * num_points; x++)
     {
-        for (int y = 0; y < num_points; y++)
-        {
-            int index = x * num_points * 4 + y * 4;
-            //sf::Uint8* color = point_color(m_set[x][y], max_iterations);
-            int* color = point_color(m_set[x][y], max_iterations);
-            image[index] = color[0];
-            image[index + 1] = color[1];
-            image[index + 2] = color[2];
-            image[index + 3] = color[3];
-        }
+        int index = x * 4;
+        int* color = point_color(m_set[x], max_iterations);
+        image[index] = color[0];
+        image[index + 1] = color[1];
+        image[index + 2] = color[2];
+        image[index + 3] = color[3];
     }
     return image;
 }
@@ -115,18 +112,21 @@ sf::Uint8* set_to_image(int** m_set, int num_points, int max_iterations)
 int main()
 {
     constexpr int num_points = 1000;
-    int** m_set = mandelbrot_set(-2.25, 0.75, -1.5, 1.5, num_points, 120);
+    int blockSize = 256;
+    int numBlocks = (num_points + blockSize - 1) / blockSize;
+    //int** m_set = mandelbrot_set <<<numBlocks, blockSize >>> (-2.25, 0.75, -1.5, 1.5, num_points, 120);
+    int* m_set = mandelbrot_set(-2.25, 0.75, -1.5, 1.5, num_points, 120);
 
 
-    constexpr float width = num_points;
-    constexpr float height = num_points;
-    sf::RenderWindow window(sf::VideoMode(num_points, num_points), "It works!");
+    constexpr int width = num_points;
+    constexpr int height = num_points;
+    sf::RenderWindow window(sf::VideoMode(width, height), "It works!");
 
 
     sf::Uint8* image = set_to_image(m_set, num_points, 120);
 
     sf::Texture texture;
-    if (!texture.create(num_points, num_points))
+    if (!texture.create(width, height))
     {
         return -1;
     }
