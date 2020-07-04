@@ -27,6 +27,9 @@ Since I am using VS 19 I had to build SFML locally and then included it in a VS 
 I now have a working version of calculating the mandelbrot set with CUDA, even though it is not yet running in parallel. This is the first result.
 
 ![alt mandelbrot_cuda_color](./assets/images/mandelbrot_cuda.JPG)
+<br>
+<br>
+I am having a few problems with CUDA throwing an exception when using more than ~300\*300points, even though the code logic is basically the same as before and have no idea why yet.
 
 ## Resources
 In this project I use SFML and Nvidia Cuda.
