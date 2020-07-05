@@ -11,6 +11,12 @@
 using namespace std;
 
 
+struct set_area {
+    double startX;
+    double endX;
+    double startY;
+    double endY;
+};
 
 __device__
 int mandelbrot_point(thrust::complex<double> c, int max_iterations)
@@ -30,21 +36,21 @@ int mandelbrot_point(thrust::complex<double> c, int max_iterations)
 
 
 __global__
-void mandelbrot_set(int* m_set, double start_x, double end_x, double start_y, double end_y, int num_points, int max_iterations)
+void mandelbrot_set(int* m_set, set_area area, int num_points, int max_iterations)
 {
     int index = blockIdx.x * blockDim.x + threadIdx.x;
     int stride = blockDim.x * gridDim.x;
     int length = num_points * num_points;
 
-    double spacing_x = abs(end_x - start_x) / ((double)num_points - 1.0);
-    double spacing_y = abs(end_y - start_y) / ((double)num_points - 1.0);
+    double spacing_x = abs(area.endX - area.startX) / ((double)num_points - 1.0);
+    double spacing_y = abs(area.endY - area.startY) / ((double)num_points - 1.0);
 
     for (int i = index; i < length; i += stride)
     {
         int pos_x = i % num_points;
         int pos_y = i / num_points;
-        double x = start_x + pos_x * spacing_x;
-        double y = start_y + pos_y * spacing_y;
+        double x = area.startX + pos_x * spacing_x;
+        double y = area.startY + pos_y * spacing_y;
 
         thrust::complex<double> c = thrust::complex<double>(x, y);
 
@@ -114,27 +120,46 @@ sf::Uint8* set_to_image(int* m_set, int num_points, int max_iterations)
     return image;
 }
 
-void refresh_mandelbrot(int* m_set, int num_points, int max_iterations, int x, int y, int zoom, int numBlocks, int blockSize)
+set_area refresh_mandelbrot(int* m_set, int num_points, int max_iterations, set_area previousArea, int x, int y, int zoomDelta, int numBlocks, int blockSize)
 {
-    double startX = -2.25;
-    double endX = 0.75;
-    double startY = -1.5;
-    double endY = 1.5;
     double factor = 1;
-    if (zoom > 0)
-    {
-        factor = 1.0 / zoom;
-    }
-    else if (zoom < 0) {
-        factor = std::abs(zoom);
-    }
-    startX = startX * factor;
-    endX = endX * factor;
-    startY = startY * factor;
-    endY = endY * factor;
+    double rangeX = previousArea.endX - previousArea.startX;
+    double rangeY = previousArea.endY - previousArea.startY;
+    double factorX = (double) x / num_points - 0.5;
+    double factorY = (double) y / num_points - 0.5;
+    cout << "FactorX " << factorX << endl;
+    cout << "FactorY " << factorY << endl;
 
-    mandelbrot_set<<<numBlocks, blockSize>>>(m_set, startX, endX, startY, endY, num_points, max_iterations);
+    previousArea.startX += factorX * rangeX;
+    previousArea.endX += factorX * rangeX;
+    previousArea.startY += factorY * rangeY;
+    previousArea.endY += factorY * rangeY;
+
+    double centerX = previousArea.startX + rangeX / 2.0;
+    double centerY = previousArea.startY + rangeY / 2.0;
+    cout << "CenterX " << centerX << endl;
+    cout << "CenterY " << centerY << endl;
+
+    if (zoomDelta > 0)
+    {
+        factor = 1.0 / (zoomDelta + 1);
+    }
+    else if (zoomDelta < 0) {
+        factor = std::abs(zoomDelta - 1);
+    }
+    previousArea.startX = centerX - (rangeX / 2.0) * factor;
+    previousArea.endX = centerX + (rangeX / 2.0) * factor;
+    previousArea.startY = centerY - (rangeY / 2.0) * factor;
+    previousArea.endY = centerY + (rangeY / 2.0) * factor;
+    cout << "In method: " << previousArea.startX << endl;
+    cout << previousArea.endX << endl;
+    cout << previousArea.startY << endl;
+    cout << previousArea.endY << endl;
+
+    mandelbrot_set<<<numBlocks, blockSize>>>(m_set, previousArea, num_points, max_iterations);
     cudaDeviceSynchronize();
+
+    return previousArea;
 }
 
 int main()
@@ -144,12 +169,22 @@ int main()
     size_t size_old = num_points * num_points;
     size_t size = num_points * num_points * sizeof(int);
 
+    set_area area;
+    area.startX = -2.25;
+    area.endX = 0.75;
+    area.startY = -1.5;
+    area.endY = 1.5;
+
+    /*area.startX = -3.75;
+    area.endX = 2.25;
+    area.startY = -3;
+    area.endY = 3;*/
 
     int blockSize = 256;
     int numBlocks = (num_points + blockSize - 1) / blockSize;
     int* m_set;
     cudaMallocManaged(&m_set, size);
-    mandelbrot_set<<<numBlocks, blockSize>>>(m_set, -2.25, 0.75, -1.5, 1.5, num_points, max_iterations);
+    mandelbrot_set << <numBlocks, blockSize >> > (m_set, area, num_points, max_iterations);
     cudaDeviceSynchronize();
 
     constexpr int width = num_points;
@@ -181,10 +216,11 @@ int main()
                 {
                     int x = event.mouseWheelScroll.x;
                     int y = event.mouseWheelScroll.y;
-                    zoom += event.mouseWheelScroll.delta;
-                    refresh_mandelbrot(m_set, num_points, max_iterations, x, y, zoom, numBlocks, blockSize);
+                    zoom = event.mouseWheelScroll.delta;
+                    area = refresh_mandelbrot(m_set, num_points, max_iterations, area, x, y, zoom, numBlocks, blockSize);
                     image = set_to_image(m_set, num_points, 120);
                     texture.update(image);
+                    cout << area.startX << endl;
                 }
             }
         }
