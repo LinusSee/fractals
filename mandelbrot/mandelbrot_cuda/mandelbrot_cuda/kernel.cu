@@ -223,6 +223,28 @@ sf::Uint8* set_to_image(int* m_set, int num_points, int max_iterations)
     return image;
 }
 
+void refresh_mandelbrot(int* m_set, int num_points, int max_iterations, int x, int y, int zoom, int numBlocks, int blockSize)
+{
+    double startX = -2.25;
+    double endX = 0.75;
+    double startY = -1.5;
+    double endY = 1.5;
+    double factor = 1;
+    if (zoom > 0)
+    {
+        factor = 1.0 / zoom;
+    }
+    else if (zoom < 0) {
+        factor = std::abs(zoom);
+    }
+    startX = startX * factor;
+    endX = endX * factor;
+    startY = startY * factor;
+    endY = endY * factor;
+
+    mandelbrot_set<<<numBlocks, blockSize>>>(m_set, startX, endX, startY, endY, num_points, max_iterations);
+    cudaDeviceSynchronize();
+}
 
 int main()
 {
@@ -264,7 +286,7 @@ int main()
     texture.update(image);
     sf::Sprite sprite;
     sprite.setTexture(texture);
-
+    int zoom = 0;
     while (window.isOpen())
     {
         sf::Event event;
@@ -272,6 +294,23 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::MouseWheelScrolled)
+            {
+                if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
+                {
+                    std::cout << "Vertical wheel" << std::endl;
+                    std::cout << "Wheel movement: " << event.mouseWheelScroll.delta << std::endl;
+                    std::cout << "mouse x: " << event.mouseWheelScroll.x << std::endl;
+                    std::cout << "mouse y: " << event.mouseWheelScroll.y << std::endl;
+                    int x = event.mouseWheelScroll.x;
+                    int y = event.mouseWheelScroll.y;
+                    zoom += event.mouseWheelScroll.delta;
+                    refresh_mandelbrot(m_set, num_points, max_iterations, x, y, zoom, numBlocks, blockSize);
+                    image = set_to_image(m_set, num_points, 120);
+                    texture.update(image);
+                }
+            }
         }
 
         window.clear();
