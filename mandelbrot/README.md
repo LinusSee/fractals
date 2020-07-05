@@ -30,6 +30,17 @@ I now have a working version of calculating the mandelbrot set with CUDA, even t
 <br>
 <br>
 I am having a few problems with CUDA throwing an exception when using more than ~300\*300points, even though the code logic is basically the same as before and have no idea why yet.
+<br>
+Thanks to StackOverflow I found out that the exception occurs because the program hits a [WDDM TDR](https://docs.microsoft.com/en-us/windows-hardware/drivers/display/timeout-detection-and-recovery) event. In other words the program took too long to execute and as I understand it Windows resets parts of the graphics stack (See the link).
+<br>
+This of course interferes with the program. Once I added the grid-stride loop described in the CUDA introduction and let it run on a lot more threads the program executed quickly enough to not run into this event.
+Here is the result, now again 1000x1000 pixels. (Approximately since I simply cut part of the screen)
+
+![alt mandelbrot_cuda_color_now_calculated_by_a_lot_of_threads](./assets/images/mandelbrot_cuda_with_multiple_threads.JPG)
+Therefore Goal #2 is now complete.
+
+### Goal #3
+TBD
 
 ## Resources
 In this project I use SFML and Nvidia Cuda.
