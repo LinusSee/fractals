@@ -10,6 +10,8 @@
 
 using namespace std;
 
+
+
 __device__
 int mandelbrot_point(thrust::complex<double> c, int max_iterations)
 {
@@ -26,43 +28,6 @@ int mandelbrot_point(thrust::complex<double> c, int max_iterations)
     return max_iterations;
 }
 
-/*
-__device__
-int mandelbrot_point(cuDoubleComplex c, int max_iterations)
-{
-    cuDoubleComplex z = make_cuDoubleComplex(0, 0);
-    for (int i = 0; i < max_iterations; i++)
-    {
-        z = cuCadd(cuCmul(z, z), c);
-
-        if (cuCabs(z) > 4)
-        {
-            return i;
-        }
-    }
-    return max_iterations;
-}
-*/
-
-/*
-__global__
-void mandelbrot_point(int* point, complex<double> c, int max_iterations)
-{
-    std::complex<double> z(0, 0);
-    for (int i = 0; i < max_iterations; i++)
-    {
-        z = z * z + c;
-        if (abs(z) > 4)
-        {
-            point[0] = i;
-            return;
-        }
-    }
-    point[0] = max_iterations;
-    return;
-}
-*/
-
 
 __global__
 void mandelbrot_set(int* m_set, double start_x, double end_x, double start_y, double end_y, int num_points, int max_iterations)
@@ -70,7 +35,7 @@ void mandelbrot_set(int* m_set, double start_x, double end_x, double start_y, do
     int index = blockIdx.x * blockDim.x + threadIdx.x;
     int stride = blockDim.x * gridDim.x;
     int length = num_points * num_points;
-    
+
     double spacing_x = abs(end_x - start_x) / ((double)num_points - 1.0);
     double spacing_y = abs(end_y - start_y) / ((double)num_points - 1.0);
 
@@ -96,81 +61,7 @@ void mandelbrot_set(int* m_set, double start_x, double end_x, double start_y, do
         }
         m_set[i] = iterations;
     }
-
-
-    
-    /*
-    double spacing_x = abs(end_x - start_x) / ((double)num_points - 1.0);
-    double spacing_y = abs(end_y - start_y) / ((double)num_points - 1.0);
-
-    double current_x = start_x;
-    double current_y = start_y;
-
-    for (int i = 0; i < num_points * num_points; i++)
-    {
-        int index = i * num_points + j;
-
-        thrust::complex<double> c = thrust::complex<double>(current_x, current_y);
-
-        int iterations = max_iterations;
-        thrust::complex<double> z = thrust::complex<double>(0, 0);
-        for (int i = 0; i < max_iterations; i++)
-        {
-            z = z * z + c;
-
-            if (thrust::abs(z) > 4)
-            {
-                iterations = i;
-                break;
-            }
-        }
-
-        //int iterations = mandelbrot_point(c, max_iterations);
-
-        m_set[index] = iterations;
-        current_x = current_x + spacing_x;
-    current_x = start_x;
-    current_y = current_y + spacing_y;
-    }*/
 }
-
-/*
-double spacing_x = abs(end_x - start_x) / ((double) num_points - 1.0);
-    double spacing_y = abs(end_y - start_y) / ((double) num_points - 1.0);
-
-    double current_x = start_x;
-    double current_y = start_y;
-
-    for (int i = 0; i < num_points; i++)
-    {
-        for (int j = 0; j < num_points; j++)
-        {
-            int index = i * num_points + j;
-
-            thrust::complex<double> c = thrust::complex<double>(current_x, current_y);
-
-            int iterations = max_iterations;
-            thrust::complex<double> z = thrust::complex<double>(0, 0);
-            for (int i = 0; i < max_iterations; i++)
-            {
-                z = z * z + c;
-
-                if (thrust::abs(z) > 4)
-                {
-                    iterations = i;
-                    break;
-                }
-            }
-
-            //int iterations = mandelbrot_point(c, max_iterations);
-
-            m_set[index] = iterations;
-            current_x = current_x + spacing_x;
-        }
-        current_x = start_x;
-        current_y = current_y + spacing_y;
-    }
-    */
 
 int* point_color(int iterations, int max_iterations)
 {
@@ -256,25 +147,14 @@ int main()
 
     int blockSize = 256;
     int numBlocks = (num_points + blockSize - 1) / blockSize;
-    //blockSize = 1;
-    //numBlocks = 1;
-    //int* m_set = new int[size_old];
     int* m_set;
-    //int* mapped = (int*)malloc(size);
     cudaMallocManaged(&m_set, size);
     mandelbrot_set<<<numBlocks, blockSize>>>(m_set, -2.25, 0.75, -1.5, 1.5, num_points, max_iterations);
-    //mandelbrot_set(m_set, -2.25, 0.75, -1.5, 1.5, num_points, max_iterations);
     cudaDeviceSynchronize();
 
     constexpr int width = num_points;
     constexpr int height = num_points;
     sf::RenderWindow window(sf::VideoMode(width, height), "It works!");
-
-    //int* mapped = new int[num_points * num_points];
-    
-    //cudaMemcpy(m_set, mapped, num_points * num_points * sizeof(int), cudaMemcpyDeviceToHost);
-    //cudaMemcpyToSymbol(mapped, &m_set, sizeof(int*));
-    //cudaMemcpy(mapped, m_set, size, cudaMemcpyDeviceToHost);
     
     sf::Uint8* image = set_to_image(m_set, num_points, 120);
 
@@ -299,10 +179,6 @@ int main()
             {
                 if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
                 {
-                    std::cout << "Vertical wheel" << std::endl;
-                    std::cout << "Wheel movement: " << event.mouseWheelScroll.delta << std::endl;
-                    std::cout << "mouse x: " << event.mouseWheelScroll.x << std::endl;
-                    std::cout << "mouse y: " << event.mouseWheelScroll.y << std::endl;
                     int x = event.mouseWheelScroll.x;
                     int y = event.mouseWheelScroll.y;
                     zoom += event.mouseWheelScroll.delta;
@@ -321,3 +197,9 @@ int main()
     cudaFree(m_set);
     return 0;
 }
+/*
+                   std::cout << "Vertical wheel" << std::endl;
+                    std::cout << "Wheel movement: " << event.mouseWheelScroll.delta << std::endl;
+                    std::cout << "mouse x: " << event.mouseWheelScroll.x << std::endl;
+                    std::cout << "mouse y: " << event.mouseWheelScroll.y << std::endl;
+                    */
