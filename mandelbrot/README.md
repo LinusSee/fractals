@@ -40,7 +40,10 @@ Here is the result, now again 1000x1000 pixels. (Approximately since I simply cu
 Therefore Goal #2 is now complete.
 
 ### Goal #3
-TBD
+Done, it is now possible to zoom in and out, however after several zooms it starts to slow down considerably, probably since I increase the iterations to keep
+a nice detail.
+<br>
+Maybe I will invest some more time into this some other day, but for now I am finished with this project.
 
 ## Resources
 In this project I use SFML and Nvidia Cuda.
