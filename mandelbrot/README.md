@@ -43,7 +43,10 @@ Therefore Goal #2 is now complete.
 Done, it is now possible to zoom in and out, however after several zooms it starts to slow down considerably, probably since I increase the iterations to keep
 a nice detail.
 <br>
-Maybe I will invest some more time into this some other day, but for now I am finished with this project.
+Maybe I will invest some more time into this some other day (same goes for improved color calculations), but for now I am finished with this project.
+<br>
+And finally, here a cool zoom into the mandelbrot set :)
+![alt cool_mandelbrot_zoom](./assets/images/cool_mandelbrot.PNG)
 
 ## Resources
 In this project I use SFML and Nvidia Cuda.
